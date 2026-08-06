@@ -1,1 +1,90 @@
-[]
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Oficina Jobs",
+  "enabled": 1,
+  "modified": "2026-08-06 15:02:57.758463",
+  "module": "Workshop",
+  "name": "Total",
+  "script": "frappe.ui.form.on('Oficina Jobs', {\n\trefresh: function(frm){\n\t//cur_frm.cscript.invoice_total_exl = function(doc, cdt, cdn) {\n  // update a new field \"custom_field3\"\n  var a = (flt(frm.doc.invoice_total_exl)*(flt(15)/100));\n  frm.set_value(\"tax\",a);\n //tax = (flt(doc.invoice_total_exl)*(flt(15)/100));\n //frm.doc.rate = rate;\n  // refresh in form\n  refresh_field('tax');\n  //refresh_field('margin');\n //doc.total=doc.tax;\n  //  refresh_field('total');\nfrm.doc.total=(frm.doc.invoice_total_exl)+(frm.doc.tax);\nrefresh_field('total');\n//};\n\t\t// your code here\n\tcur_frm.save();\n\t}\n\t\n\t\n\t\n});\n\n  ",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Jobcard",
+  "enabled": 0,
+  "modified": "2026-08-06 15:03:45.335843",
+  "module": "Workshop",
+  "name": "Jobcard Item",
+  "script": "frappe.ui.form.on('Jobcard',\"Trigger\", function(frm) {\n\tfrappe.model.with_doc(\"Sales Order\", frm.doc.trigger, function() {\n\t     var tabletransfer= frappe.model.get_doc(\"Jobcard\", frm.doc.Trigger)\n\t     $.each(tabletransfer.Sales_Order_Item, function(index, row){\n\td = frm.add_child(\"Jobcard Item\");\n            d.field1 = row.rate;\n            d.field2 = row.rate;\n            cur_frm.refresh_field(\"Jobcard item\");\n        });\n    })\n});\n\n\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Jobcard",
+  "enabled": 1,
+  "modified": "2026-08-06 15:05:08.619223",
+  "module": "Workshop",
+  "name": "Jobcard_Form",
+  "script": "frappe.ui.form.on('Jobcard', {\n\trefresh(frm) {\n\t\tfrm.add_fetch(\"inspection\", \"reg_no\", \"reg_no\");\n\t\tfrm.add_fetch(\"inspection\", \"vin_no\", \"vin_number\");\n\t\tfrm.add_fetch(\"inspection\", \"engine_no\", \"engine_number\");\n\t\tfrm.add_fetch(\"inspection\", \"make\", \"vehicle_make\");\n\t\tfrm.add_fetch(\"inspection\", \"model\", \"vehicle_model\");\n\t\tfrm.add_fetch(\"inspection\", \"detailed_job_description\", \"detailed_job_description\");\n\t\tfrm.add_fetch(\"inspection\", \"odo\", \"odo_inspection\");\n\t\tfrm.add_fetch(\"inspection\", \"hour_meter\", \"hour_inspection\");\n\t\t\n   if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('supervisor',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('manager',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('customer_signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    if( cur_frm.doc.status=='Signed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('supervisor',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('manager',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('customer_signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n\t\t\n\t}\n})\n\n\nfrappe.ui.form.on('Jobcard', {\n    sales_orders: function (frm) {\n        if (frm.doc.sales_orders) {\n            frm.clear_table('sales_order_item');\n            frappe.model.with_doc('Sales Order', frm.doc.sales_orders, function () {\n                let source_doc = frappe.model.get_doc('Sales Order', frm.doc.sales_orders);\n                $.each(source_doc.items, function (index, source_row) {\n                    const target_row = frm.add_child('sales_order_item');\n                    target_row.item_code = source_row.item_code;\n                    target_row.rate = source_row.rate;\n                    target_row.qty = source_row.qty;\n                    target_row.amount = source_row.amount;\n                     target_row.delivery_date = source_row.delivery_date;\n                    //frm.add_child('sales_order_item').item_code = source_row.item_code; // this table has only one column. You might want to fill more columns.\n                    //frm.add_child('sales_order_item').rate = source_row.rate;\n                    frm.refresh_field('sales_order_item');\n                });\n            });\n        }\n    },\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Jobcard",
+  "enabled": 1,
+  "modified": "2026-08-06 15:05:54.023271",
+  "module": "Workshop",
+  "name": "Jobcard_list",
+  "script": "frappe.ui.form.on('Jobcard', {\n\trefresh(frm) {\n\t\tfrm.add_fetch(\"inspection\", \"reg_no\", \"reg_no\");\n\t\tfrm.add_fetch(\"inspection\", \"vin_no\", \"vin_number\");\n\t\tfrm.add_fetch(\"inspection\", \"engine_no\", \"engine_number\");\n\t\tfrm.add_fetch(\"inspection\", \"make\", \"vehicle_make\");\n\t\tfrm.add_fetch(\"inspection\", \"model\", \"vehicle_model\");\n\t\t\n   if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n\t\t\n\t}\n})",
+  "view": "List"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quote",
+  "enabled": 1,
+  "modified": "2026-08-06 15:06:31.877633",
+  "module": "Workshop",
+  "name": "Quote-List",
+  "script": "frappe.ui.form.on('Quote', {\n\trefresh(frm) {\n\tfrappe.set_route(\"Form\", \"Quotation\", \"new-quotation\")\n\t}\n})",
+  "view": "List"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quote",
+  "enabled": 1,
+  "modified": "2026-08-06 15:07:06.232650",
+  "module": "Workshop",
+  "name": "Quote-Form",
+  "script": "frappe.ui.form.on('Quote', {\n\trefresh(frm) {\n\tfrappe.set_route(\"Form\", \"Quotation\", \"new-quotation\")\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection",
+  "enabled": 1,
+  "modified": "2026-08-06 15:07:42.695921",
+  "module": "Workshop",
+  "name": "Inspection-List",
+  "script": "frappe.ui.form.on(\"Inspection\", \"refresh\", function(frm){\n    if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Completed' ) {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         })\n         })\n    }\n    \n    \n    if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    \n    \n});",
+  "view": "List"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection",
+  "enabled": 1,
+  "modified": "2026-08-06 15:08:18.487121",
+  "module": "Workshop",
+  "name": "Inspection-Form",
+  "script": "frappe.ui.form.on(\"Inspection\", \"refresh\", function(frm){\n    if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Completed') {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         })\n         })\n    }\n      if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Signed' ) {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         })\n         })\n    }\n    \n    if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('verified_by',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    if( cur_frm.doc.status=='Signed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('verified_by',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n});",
+  "view": "Form"
+ }
+]
