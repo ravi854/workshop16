@@ -1,7 +1,7 @@
 {
  "app": "workshop",
  "charts": [],
- "content": "[{\"id\":\"HZ5z2EohfJ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the Workshop workspace</span>\",\"col\":12}},{\"id\":\"lzB1A7EOq_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Click on \\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t to edit\",\"col\":12}},{\"id\":\"_zdmqfKP5Y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Oficina History Jobs\",\"col\":3}},{\"id\":\"iBa6chZpOT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection\",\"col\":3}},{\"id\":\"7ZJkxB2ut1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quotation\",\"col\":3}},{\"id\":\"pMPz0GomGs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Jobcard\",\"col\":3}}]",
+ "content": "[{\"id\":\"HZ5z2EohfJ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the Workshop workspace</span>\",\"col\":12}},{\"id\":\"lzB1A7EOq_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Click on \\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t to edit\",\"col\":12}},{\"id\":\"_zdmqfKP5Y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Oficina History Jobs\",\"col\":3}},{\"id\":\"iBa6chZpOT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection\",\"col\":3}},{\"id\":\"7ZJkxB2ut1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quotation\",\"col\":3}},{\"id\":\"pMPz0GomGs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Jobcard\",\"col\":3}},{\"id\":\"xWiyZS6PiZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection Multicranes\",\"col\":5}},{\"id\":\"C9d0zIQuuL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection Out\",\"col\":3}}]",
  "creation": "2026-06-12 07:59:29.592010",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "label": "Workshop",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-06-12 08:10:50.551472",
+ "modified": "2026-08-10 12:54:40.554767",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Workshop",
@@ -27,8 +27,24 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Inspection Multicranes",
+   "link_to": "Inspection_M",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Oficina History Jobs",
    "link_to": "Oficina Jobs",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Inspection Out",
+   "link_to": "Inspection_Out",
    "stats_filter": "[]",
    "type": "DocType"
   },

@@ -2,9 +2,15 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+<<<<<<< HEAD
   "dt": "Oficina Jobs",
   "enabled": 1,
   "modified": "2026-08-06 15:02:57.758463",
+=======
+  "dt": "Jobcard",
+  "enabled": 1,
+  "modified": "2026-08-06 16:02:06.636700",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "module": "Workshop",
   "name": "Total",
   "script": "frappe.ui.form.on('Oficina Jobs', {\n\trefresh: function(frm){\n\t//cur_frm.cscript.invoice_total_exl = function(doc, cdt, cdn) {\n  // update a new field \"custom_field3\"\n  var a = (flt(frm.doc.invoice_total_exl)*(flt(15)/100));\n  frm.set_value(\"tax\",a);\n //tax = (flt(doc.invoice_total_exl)*(flt(15)/100));\n //frm.doc.rate = rate;\n  // refresh in form\n  refresh_field('tax');\n  //refresh_field('margin');\n //doc.total=doc.tax;\n  //  refresh_field('total');\nfrm.doc.total=(frm.doc.invoice_total_exl)+(frm.doc.tax);\nrefresh_field('total');\n//};\n\t\t// your code here\n\tcur_frm.save();\n\t}\n\t\n\t\n\t\n});\n\n  ",
@@ -15,7 +21,11 @@
   "doctype": "Client Script",
   "dt": "Jobcard",
   "enabled": 0,
+<<<<<<< HEAD
   "modified": "2026-08-06 15:03:45.335843",
+=======
+  "modified": "2026-08-06 16:02:44.616677",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "module": "Workshop",
   "name": "Jobcard Item",
   "script": "frappe.ui.form.on('Jobcard',\"Trigger\", function(frm) {\n\tfrappe.model.with_doc(\"Sales Order\", frm.doc.trigger, function() {\n\t     var tabletransfer= frappe.model.get_doc(\"Jobcard\", frm.doc.Trigger)\n\t     $.each(tabletransfer.Sales_Order_Item, function(index, row){\n\td = frm.add_child(\"Jobcard Item\");\n            d.field1 = row.rate;\n            d.field2 = row.rate;\n            cur_frm.refresh_field(\"Jobcard item\");\n        });\n    })\n});\n\n\n",
@@ -26,6 +36,7 @@
   "doctype": "Client Script",
   "dt": "Jobcard",
   "enabled": 1,
+<<<<<<< HEAD
   "modified": "2026-08-06 15:05:08.619223",
   "module": "Workshop",
   "name": "Jobcard_Form",
@@ -38,6 +49,9 @@
   "dt": "Jobcard",
   "enabled": 1,
   "modified": "2026-08-06 15:05:54.023271",
+=======
+  "modified": "2026-08-06 16:03:30.816829",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "module": "Workshop",
   "name": "Jobcard_list",
   "script": "frappe.ui.form.on('Jobcard', {\n\trefresh(frm) {\n\t\tfrm.add_fetch(\"inspection\", \"reg_no\", \"reg_no\");\n\t\tfrm.add_fetch(\"inspection\", \"vin_no\", \"vin_number\");\n\t\tfrm.add_fetch(\"inspection\", \"engine_no\", \"engine_number\");\n\t\tfrm.add_fetch(\"inspection\", \"make\", \"vehicle_make\");\n\t\tfrm.add_fetch(\"inspection\", \"model\", \"vehicle_model\");\n\t\t\n   if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n\t\t\n\t}\n})",
@@ -46,9 +60,26 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+<<<<<<< HEAD
   "dt": "Quote",
   "enabled": 1,
   "modified": "2026-08-06 15:06:31.877633",
+=======
+  "dt": "Jobcard",
+  "enabled": 1,
+  "modified": "2026-08-06 16:05:13.857974",
+  "module": "Workshop",
+  "name": "Jobcard_Form",
+  "script": "frappe.ui.form.on('Jobcard', {\n\trefresh(frm) {\n\t\tfrm.add_fetch(\"inspection\", \"reg_no\", \"reg_no\");\n\t\tfrm.add_fetch(\"inspection\", \"vin_no\", \"vin_number\");\n\t\tfrm.add_fetch(\"inspection\", \"engine_no\", \"engine_number\");\n\t\tfrm.add_fetch(\"inspection\", \"make\", \"vehicle_make\");\n\t\tfrm.add_fetch(\"inspection\", \"model\", \"vehicle_model\");\n\t\tfrm.add_fetch(\"inspection\", \"detailed_job_description\", \"detailed_job_description\");\n\t\tfrm.add_fetch(\"inspection\", \"odo\", \"odo_inspection\");\n\t\tfrm.add_fetch(\"inspection\", \"hour_meter\", \"hour_inspection\");\n\t\t\n   if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('supervisor',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('manager',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('customer_signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    if( cur_frm.doc.status=='Signed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('supervisor',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('manager',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('customer_signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n\t\t\n\t}\n})\n\n\nfrappe.ui.form.on('Jobcard', {\n    sales_orders: function (frm) {\n        if (frm.doc.sales_orders) {\n            frm.clear_table('sales_order_item');\n            frappe.model.with_doc('Sales Order', frm.doc.sales_orders, function () {\n                let source_doc = frappe.model.get_doc('Sales Order', frm.doc.sales_orders);\n                $.each(source_doc.items, function (index, source_row) {\n                    const target_row = frm.add_child('sales_order_item');\n                    target_row.item_code = source_row.item_code;\n                    target_row.rate = source_row.rate;\n                    target_row.qty = source_row.qty;\n                    target_row.amount = source_row.amount;\n                     target_row.delivery_date = source_row.delivery_date;\n                    //frm.add_child('sales_order_item').item_code = source_row.item_code; // this table has only one column. You might want to fill more columns.\n                    //frm.add_child('sales_order_item').rate = source_row.rate;\n                    frm.refresh_field('sales_order_item');\n                });\n            });\n        }\n    },\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quote",
+  "enabled": 1,
+  "modified": "2026-08-06 16:06:04.833171",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "module": "Workshop",
   "name": "Quote-List",
   "script": "frappe.ui.form.on('Quote', {\n\trefresh(frm) {\n\tfrappe.set_route(\"Form\", \"Quotation\", \"new-quotation\")\n\t}\n})",
@@ -59,7 +90,11 @@
   "doctype": "Client Script",
   "dt": "Quote",
   "enabled": 1,
+<<<<<<< HEAD
   "modified": "2026-08-06 15:07:06.232650",
+=======
+  "modified": "2026-08-06 16:07:43.168307",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "module": "Workshop",
   "name": "Quote-Form",
   "script": "frappe.ui.form.on('Quote', {\n\trefresh(frm) {\n\tfrappe.set_route(\"Form\", \"Quotation\", \"new-quotation\")\n\t}\n})",
@@ -70,7 +105,11 @@
   "doctype": "Client Script",
   "dt": "Inspection",
   "enabled": 1,
+<<<<<<< HEAD
   "modified": "2026-08-06 15:07:42.695921",
+=======
+  "modified": "2026-08-06 16:08:23.740297",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "module": "Workshop",
   "name": "Inspection-List",
   "script": "frappe.ui.form.on(\"Inspection\", \"refresh\", function(frm){\n    if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Completed' ) {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         })\n         })\n    }\n    \n    \n    if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    \n    \n});",
@@ -81,10 +120,72 @@
   "doctype": "Client Script",
   "dt": "Inspection",
   "enabled": 1,
+<<<<<<< HEAD
   "modified": "2026-08-06 15:08:18.487121",
   "module": "Workshop",
   "name": "Inspection-Form",
   "script": "frappe.ui.form.on(\"Inspection\", \"refresh\", function(frm){\n    if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Completed') {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         })\n         })\n    }\n      if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Signed' ) {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         })\n         })\n    }\n    \n    if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('verified_by',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    if( cur_frm.doc.status=='Signed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('verified_by',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n});",
+=======
+  "modified": "2026-08-08 09:23:31.043580",
+  "module": "Workshop",
+  "name": "Inspection-Form",
+  "script": "frappe.ui.form.on(\"Inspection\", \"refresh\", function(frm){\n    if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Completed') {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         });\n         });\n    }\n      if(cur_frm.doc.docstatus == 1 && cur_frm.doc.status=='Signed' ) {\n      frm.add_custom_button(__(\"Create Quotation\"), function() {\n         frappe.set_route(\"Form\", \"Quotation\", {\n             \"inspection_detail\": frm.doc.name,\n             \n         });\n         });\n    }\n    \n    if( cur_frm.doc.status=='Completed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('verified_by',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n    if( cur_frm.doc.status=='Signed' ) {\n      {\n          // msgprint('You can not UPDATE STATUS after Completion');\n        frm.set_df_property('status',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('signature',  'read_only',  frm.doc.__islocal ? 0 : 1);\n        frm.set_df_property('verified_by',  'read_only',  frm.doc.__islocal ? 0 : 1);\n                // frappe.set_route(\"Form\", \"Quotation\", {\n          //   \"inspection_detail\": frm.doc.name,\n             \n        // })\n         }\n    }\n    \n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2026-08-08 09:54:33.473224",
+  "module": "Workshop",
+  "name": "Quotation-Form",
+  "script": "frappe.ui.form.on('Quotation', {\n\trefresh(frm) {\n\tfrm.add_fetch(\"custom_inspection_detail\", \"reg_no\", \"custom_reg\");\n\t\tfrm.add_fetch(\"custom_inspection_detail\", \"vin_no\", \"custom_vin\");\n\t\tfrm.add_fetch(\"custom_inspection_detail\", \"engine_no\", \"custom_engine\");\n\t\tfrm.add_fetch(\"custom_inspection_detail\", \"make\", \"custom_make\");\n\t\tfrm.add_fetch(\"custom_inspection_detail\", \"model\", \"custom_model\");\t// your code here\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2026-08-08 09:24:23.086363",
+  "module": "Workshop",
+  "name": "Quotation-List",
+  "script": "frappe.ui.form.on('Quotation', {\n\trefresh(frm) {\n\tfrm.add_fetch(\"inspection_detail\", \"reg_no\", \"reg\");\n\t\tfrm.add_fetch(\"inspection_detail\", \"vin_no\", \"vin\");\n\t\tfrm.add_fetch(\"inspection_detail\", \"engine_no\", \"engine\");\n\t\tfrm.add_fetch(\"inspection_detail\", \"make\", \"make\");\n\t\tfrm.add_fetch(\"inspection_detail\", \"model\", \"model\");\t// your code here\n\t}\n})",
+  "view": "List"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection_M",
+  "enabled": 1,
+  "modified": "2026-08-08 14:24:30.883802",
+  "module": "Workshop",
+  "name": "Inspection Image View",
+  "script": "frappe.ui.form.on('Inspection_M', {\n    refresh: function(frm) {\n        update_primary_image_view(frm);\n    },\n    selected_image_source: function(frm) {\n        update_primary_image_view(frm);\n    },\n    left_front_top: function(frm) {\n        update_primary_image_view(frm);\n    },\n    left_front_down: function(frm) {\n        update_primary_image_view(frm);\n    }\n});\n\nfunction update_primary_image_view(frm) {\n    let source = frm.doc.selected_image_source;\n    let path = \"\";\n\n    // Map your dropdown item options cleanly to the target data points\n    if (source === \"Left Front Top\") {\n        path = frm.doc.left_front_top;\n    } else if (source === \"Left Front Down\") {\n        path = frm.doc.left_front_down;\n    } else if (source === \"Left Top\") {\n        path = frm.doc.left_top;\n    } else if (source === \"Left Down\") {\n        path = frm.doc.left_down;\n    } else if (source === \"Left Back Top\") {\n        path = frm.doc.left_back_top;\n    } else if (source === \"Left Back Down\") {\n        path = frm.doc.left_bac_down;\n    } else if (source === \"Right Top\") {\n        path = frm.doc.right_top;\n    } else if (source === \"Right Down\") {\n        path = frm.doc.right_down;\n    } else if (source === \"Right Back Top\") {\n        path = frm.doc.right_back_top;\n    } else if (source === \"Right Back Down\") {\n        path = frm.doc.right_back_down;\n    } else if (source === \"Front Left\") {\n        path = frm.doc.front_left;\n    } else if (source === \"Front Right\") {\n        path = frm.doc.front_right;\n    } else if (source === \"Back Left\") {\n        path = frm.doc.back_left;\n    } else if (source === \"Back Right\") {\n        path = frm.doc.back_right;\n    } else if (source === \"Wheels front Left\") {\n        path = frm.doc.wheels_front_left;\n    } else if (source === \"Wheels front Right\") {\n        path = frm.doc.wheels_front_right;\n    } else if (source === \"Wheels Back Right\") {\n        path = frm.doc.wheels_back_right;\n    } else if (source === \"Wheels Back Left\") {\n        path = frm.doc.wheels_back_left;\n    } else if (source === \"Extra1\") {\n        path = frm.doc.extra1;\n    } else if (source === \"Extar2\") {\n        path = frm.doc.extra2;\n    } else if (source === \"Extar3\") {\n        path = frm.doc.extra3;\n    } else if (source === \"Extra4\") {\n        path = frm.doc.extra4;\n    }\n\n    // Get a clean reference link to the targeted field HTML wrapper element\n    let target_wrapper = frm.fields_dict['dynamic_preview_image'].wrapper;\n\n    if (path) {\n        // Clear old preloads to prevent duplicates\n        let existing_preload = document.getElementById(\"dynamic-img-preload\");\n        if (existing_preload) existing_preload.remove();\n\n        // Create the preloader tag with explicit types\n        let preload_link = document.createElement(\"link\");\n        preload_link.id = \"dynamic-img-preload\";\n        preload_link.rel = \"preload\";\n        preload_link.as = \"image\";\n        preload_link.href = path;\n        preload_link.setAttribute(\"fetchpriority\", \"high\");\n        document.head.appendChild(preload_link);\n\n        // Force a visibility switch on the wrapper layout wrapper\n        frm.toggle_display('dynamic_preview_image', true);\n\n        // Inject a raw semantic layout block directly to guarantee a visible render\n        $(target_wrapper).html(`\n            <div style=\"padding: 1px 0;\">\n                <label class=\"control-label\" style=\"margin-bottom: 5px;\">Selected Image Preview</label>\n                <div style=\"background-color: #f8f9fa; border: 1px solid #d1d8dd; border-radius: 1px; padding: 1px; max-width: 100%; text-align: center;\">\n                    <img src=\"${path}\" alt=\"Inspection Asset\" style=\"max-height: 400px; max-width: 100%; object-fit: contain; border-radius: 2px;\" />\n                </div>\n            </div>\n        `);\n    } else {\n        // Cleanly wipe the raw layout area and hide the block from the form frame\n        $(target_wrapper).html(\"\");\n        frm.toggle_display('dynamic_preview_image', false);\n\n        let existing_preload = document.getElementById(\"dynamic-img-preload\");\n        if (existing_preload) existing_preload.remove();\n    }\n}\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection_M",
+  "enabled": 1,
+  "modified": "2026-08-10 13:46:33.666443",
+  "module": "Workshop",
+  "name": "Section",
+  "script": "frappe.ui.form.on('Inspection_M', {\n    refresh(frm) {\n        // Toggle visibility of the target section break\n        if (!frm.is_new()) {\n            frm.set_df_property('section_break_frdd', 'hidden', 0);\n        } else {\n            frm.set_df_property('section_break_frdd', 'hidden', 1);\n        }\n\n        // Handle 'booked_in_signature' state based on actual data existence\n        if (frm.doc.booked_in_signature) {\n            lock_signature_pad(frm, 'booked_in_signature');\n            remove_signature_save_button(frm, 'booked_in_signature');\n        } else {\n            unlock_signature_pad(frm, 'booked_in_signature');\n            render_signature_save_button(frm, 'booked_in_signature');\n        }\n\n        // Handle 'driver_signature' state based on actual data existence\n        if (frm.doc.driver_signature) {\n            lock_signature_pad(frm, 'driver_signature');\n            remove_signature_save_button(frm, 'driver_signature');\n        } else {\n            unlock_signature_pad(frm, 'driver_signature');\n            render_signature_save_button(frm, 'driver_signature');\n        }\n    },\n    \n    after_save: function(frm) {\n        // Evaluate inputs immediately upon successful save\n        if (frm.doc.booked_in_signature) {\n            lock_signature_pad(frm, 'booked_in_signature');\n            remove_signature_save_button(frm, 'booked_in_signature');\n        }\n        if (frm.doc.driver_signature) {\n            lock_signature_pad(frm, 'driver_signature');\n            remove_signature_save_button(frm, 'driver_signature');\n        }\n\n        // Cleanly handle accordion section snapping routines\n        let attempts = 0;\n        let forceLayout = setInterval(() => {\n            frm.set_df_property('section_break_frdd', 'hidden', 0);\n            \n            frm.layout.fields_list.forEach(field => {\n                if (field.df.fieldtype === 'Section Break') {\n                    if (field.df.fieldname === 'section_break_frdd') {\n                        field.collapsed = false;\n                        field.collapse(false);\n                        \n                        if (field.$wrapper) {\n                            field.$wrapper.find('.section-body').removeClass('collapse').addClass('show');\n                            field.$wrapper.find('.section-head').removeClass('collapsed').attr('aria-expanded', 'true');\n                        }\n                    } else {\n                        field.collapsed = true;\n                        field.collapse(true);\n                    }\n                }\n            });\n\n            attempts++;\n            if (attempts > 5) {\n                clearInterval(forceLayout);\n                \n                let targetSection = frm.get_field('section_break_frdd');\n                if (targetSection) {\n                    frappe.utils.scroll_to(targetSection.$wrapper);\n                }\n            }\n        }, 150);\n    }\n});\n\n// FREEZES canvas inputs but leaves visual data visible\nfunction lock_signature_pad(frm, fieldname) {\n    let field = frm.get_field(fieldname);\n    if (field && field.$wrapper) {\n        field.$wrapper.find('.signature-btn-clear').hide();\n        field.$wrapper.find('.signature-display, canvas').css({\n            'pointer-events': 'none',\n            'opacity': '0.95'\n        });\n    }\n}\n\n// RESTORES canvas capabilities if the field is blank\nfunction unlock_signature_pad(frm, fieldname) {\n    let field = frm.get_field(fieldname);\n    if (field && field.$wrapper) {\n        field.$wrapper.find('.signature-btn-clear').show();\n        field.$wrapper.find('.signature-display, canvas').css({\n            'pointer-events': 'auto',\n            'opacity': '1.0'\n        });\n    }\n}\n\n// Generates custom action buttons dynamically\nfunction render_signature_save_button(frm, fieldname) {\n    let field = frm.get_field(fieldname);\n    if (field && field.$wrapper) {\n        field.$wrapper.find('.custom-sig-save-btn').remove();\n\n        let btn_html = `\n            <div style=\"margin-top: 10px;\" class=\"custom-sig-save-btn\">\n                <button class=\"btn btn-xs btn-primary btn-custom-save\">\n                    <i class=\"fa fa-floppy-o\" style=\"margin-right: 5px;\"></i> Save Document & Signature\n                </button>\n            </div>\n        `;\n        \n        field.$wrapper.append(btn_html);\n\n        field.$wrapper.find('.btn-custom-save').on('click', function() {\n            if (frm.is_dirty()) {\n                frappe.show_alert({message: __('Saving changes...'), indicator: 'blue'});\n                frm.save();\n            } else {\n                frappe.show_alert({message: __('No changes detected to save.'), indicator: 'orange'});\n            }\n        });\n    }\n}\n\n// Utility function to cleanly drop buttons out of layout context\nfunction remove_signature_save_button(frm, fieldname) {\n    let field = frm.get_field(fieldname);\n    if (field && field.$wrapper) {\n        field.$wrapper.find('.custom-sig-save-btn').remove();\n    }\n}\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection_M",
+  "enabled": 0,
+  "modified": "2026-08-10 13:23:35.380425",
+  "module": "Workshop",
+  "name": "backup section",
+  "script": "frappe.ui.form.on('Inspection_M', {\n    refresh(frm) {\n        if (!frm.is_new()) {\n            frm.set_df_property('section_break_frdd', 'hidden', 0);\n        } else {\n            frm.set_df_property('section_break_frdd', 'hidden', 1);\n        }\n    },\n    after_save: function(frm) {\n        // Use an interval to repeatedly force the state until the core reload settles\n        let attempts = 0;\n        let forceLayout = setInterval(() => {\n            frm.set_df_property('section_break_frdd', 'hidden', 0);\n            \n            frm.layout.fields_list.forEach(field => {\n                if (field.df.fieldtype === 'Section Break') {\n                    if (field.df.fieldname === 'section_break_frdd') {\n                        // 1. Force state in the field object\n                        field.collapsed = false;\n                        field.collapse(false);\n                        \n                        // 2. Remove the Framework's Bootstrap collapsed classes manually\n                        if (field.$wrapper) {\n                            field.$wrapper.find('.section-body').removeClass('collapse').addClass('show');\n                            field.$wrapper.find('.section-head').removeClass('collapsed').attr('aria-expanded', 'true');\n                        }\n                    } else {\n                        field.collapsed = true;\n                        field.collapse(true);\n                    }\n                }\n            });\n\n            attempts++;\n            if (attempts > 5) {\n                clearInterval(forceLayout);\n                \n                // 3. Final smooth scroll once the layout settles\n                let targetSection = frm.get_field('section_break_frdd');\n                if (targetSection) {\n                    frappe.utils.scroll_to(targetSection.$wrapper);\n                }\n            }\n        }, 150); // Fires every 150ms to fight off the native form re-render\n    }\n});\n",
+>>>>>>> 738ae70 (update Inspection Doctype)
   "view": "Form"
  }
 ]
