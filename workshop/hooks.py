@@ -258,7 +258,7 @@ app_license = "mit"
 
 fixtures = [
     # Export all Custom Fields added to any standard DocType
-    {"dt": "Custom Field", "filters": {"module": "biotime_sync"}},
+    {"dt": "Custom Field", "filters": {"module": "workshop"}},
 
     # Export Client Scripts created via the Desk
     "Client Script",
@@ -267,6 +267,6 @@ fixtures = [
     "Server Script",
 
     # Optional: Export Property Setters (labels, mandatory fields, etc.)
-    {"dt": "Property Setter", "filters": {"module": "biotime_sync"}}
+    {"dt": "Property Setter", "filters": {"module": "workshop"}}
 ]
 
