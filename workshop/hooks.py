@@ -267,6 +267,10 @@ fixtures = [
     "Server Script",
 
     # Optional: Export Property Setters (labels, mandatory fields, etc.)
-    {"dt": "Property Setter", "filters": {"module": "Workshop"}}
+    {"dt": "Property Setter", "filters": {"module": "Workshop"}},
+
+
+    {"dt": "Print Format", "filters": {"module": "Workshop"}}
+
 ]
 
