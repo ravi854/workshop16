@@ -8,6 +8,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "general_section",
   "incoming_inspection_number",
   "company",
   "naming_series",
@@ -111,6 +112,18 @@
   "inspection_details",
   "column_break_rdbt",
   "detail_of_work_to_be_done",
+  "section_break_mqct",
+  "parameter_1",
+  "parameter_2",
+  "column_break_whyi",
+  "parameter_3",
+  "parameter_4",
+  "column_break_mwgt",
+  "parameter_5",
+  "parameter_6",
+  "column_break_umiw",
+  "parameter_7",
+  "parameter_8",
   "section_break_frdd",
   "date_delivered",
   "date_collected",
@@ -120,7 +133,9 @@
   "booked_out_signature",
   "column_break_yuaa",
   "drivers_name",
-  "driver_signature"
+  "drivers_name_copy",
+  "driver_signature",
+  "column_break_doyd"
  ],
  "fields": [
   {
@@ -185,8 +200,10 @@
    "fieldtype": "Column Break"
   },
   {
+   "collapsible": 1,
    "fieldname": "section_break_7nfl",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Detail"
   },
   {
    "fetch_from": "incoming_inspection_number.customer_name",
@@ -697,6 +714,7 @@
    "fieldtype": "Image"
   },
   {
+   "collapsible": 1,
    "fieldname": "section_break_lwxm",
    "fieldtype": "Section Break",
    "label": "Inspection Detail / Work Done"
@@ -731,7 +749,7 @@
    "label": "Date Collected"
   },
   {
-   "depends_on": "eval: doc.inspection_type ===\"Incoming\";",
+   "depends_on": "eval: doc.inspection_type ===\"Outgoing\";",
    "fieldname": "column_break_nlyl",
    "fieldtype": "Column Break"
   },
@@ -763,13 +781,93 @@
    "fieldname": "driver_signature",
    "fieldtype": "Signature",
    "label": "Driver Signature"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "fieldname": "section_break_mqct",
+   "fieldtype": "Section Break",
+   "label": "Quality Control Check"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_1",
+   "fieldtype": "Check",
+   "label": "Parameter 1"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_2",
+   "fieldtype": "Check",
+   "label": "Parameter 2"
+  },
+  {
+   "fieldname": "column_break_whyi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mwgt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_umiw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_3",
+   "fieldtype": "Check",
+   "label": "Parameter 3"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_4",
+   "fieldtype": "Check",
+   "label": "Parameter 4"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_5",
+   "fieldtype": "Check",
+   "label": "Parameter 5"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_6",
+   "fieldtype": "Check",
+   "label": "Parameter 6"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_7",
+   "fieldtype": "Check",
+   "label": "Parameter 7"
+  },
+  {
+   "default": "0",
+   "fieldname": "parameter_8",
+   "fieldtype": "Check",
+   "label": "Parameter 8"
+  },
+  {
+   "fieldname": "column_break_doyd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drivers_name_copy",
+   "fieldtype": "Data",
+   "label": "Drivers Name Copy"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-10 15:03:11.223624",
+ "modified": "2026-08-10 15:31:44.501539",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_Out",

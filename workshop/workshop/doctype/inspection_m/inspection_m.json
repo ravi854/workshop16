@@ -12,24 +12,20 @@
   "amended_from",
   "contact_person",
   "column_break_ysvw",
-  "customer_phone",
-  "crane_model",
-  "truck_model",
-  "column_break_hbfj",
-  "crane_serial_number",
-  "km",
-  "column_break_ngoh",
-  "registration_number",
   "vin_number",
+  "registration_number",
+  "column_break_hbfj",
+  "truck_model",
+  "km",
+  "crane_serial_number",
+  "crane_model",
   "section_break_fatc",
   "company",
   "naming_series",
   "date",
   "column_break_vbof",
   "inspection_type",
-  "column_break_xequ",
   "job_number",
-  "column_break_cnjn",
   "section_break_bodn",
   "mirror_left",
   "mirror_right",
@@ -133,13 +129,6 @@
    "show_on_timeline": 1
   },
   {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Date",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_vbof",
    "fieldtype": "Column Break"
   },
@@ -151,17 +140,9 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_xequ",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "job_number",
    "fieldtype": "Data",
    "label": "Job Number"
-  },
-  {
-   "fieldname": "column_break_cnjn",
-   "fieldtype": "Column Break"
   },
   {
    "collapsible": 1,
@@ -188,12 +169,6 @@
    "reqd": 1
   },
   {
-   "fetch_from": "customer_name.mobile_no",
-   "fieldname": "customer_phone",
-   "fieldtype": "Data",
-   "label": "customer phone"
-  },
-  {
    "fieldname": "contact_person",
    "fieldtype": "Data",
    "label": "Contact Person"
@@ -205,7 +180,7 @@
   {
    "fieldname": "crane_model",
    "fieldtype": "Data",
-   "label": "Crane Model"
+   "label": "Equipment Model"
   },
   {
    "fieldname": "truck_model",
@@ -226,7 +201,7 @@
   {
    "fieldname": "crane_serial_number",
    "fieldtype": "Data",
-   "label": "Crane Serial Number"
+   "label": "Equipment SNo."
   },
   {
    "fieldname": "registration_number",
@@ -742,20 +717,23 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_ngoh",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_fatc",
    "fieldtype": "Section Break",
    "label": "General"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-10 13:51:12.850807",
+ "modified": "2026-08-11 20:30:25.948096",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",

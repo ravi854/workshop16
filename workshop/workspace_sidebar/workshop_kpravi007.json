@@ -1,0 +1,39 @@
+{
+ "app": "workshop",
+ "creation": "2026-08-10 20:20:07.546861",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "for_user": "kpravi007@gmail.com",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Inspection IN",
+   "link_to": "Inspection_M",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Inspection Out",
+   "link_to": "Inspection_Out",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-10 20:22:16.154319",
+ "modified_by": "Administrator",
+ "module": "Workshop",
+ "name": "Workshop-kpravi007",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Workshop-kpravi007"
+}

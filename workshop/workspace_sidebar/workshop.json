@@ -1,0 +1,75 @@
+{
+ "app": "workshop",
+ "creation": "2026-08-06 14:58:33.104833",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "for_user": "kpravi007@gmail.com",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "wallpaper",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Workshop",
+   "link_to": "Workshop",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "list",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Oficina Jobs",
+   "link_to": "Oficina Jobs",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "list",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Quote",
+   "link_to": "Quote",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "list",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Jobcard",
+   "link_to": "Jobcard",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Reports",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Section Break"
+  }
+ ],
+ "modified": "2026-08-10 18:30:53.781560",
+ "modified_by": "Administrator",
+ "module": "Workshop",
+ "name": "Workshop",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Workshop"
+}
