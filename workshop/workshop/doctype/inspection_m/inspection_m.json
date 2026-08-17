@@ -26,6 +26,8 @@
   "column_break_vbof",
   "inspection_type",
   "job_number",
+  "manual_inspection",
+  "attach_manual_inspection_sheet",
   "section_break_bodn",
   "mirror_left",
   "mirror_right",
@@ -119,11 +121,13 @@
  "fields": [
   {
    "bold": 1,
+   "default": "INS-MC-IN-.YYYY.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Naming Series",
-   "options": "INS-IN-.YYYY.-",
+   "options": "INS-MC-IN-.YYYY.-",
    "print_hide": 1,
    "reqd": 1,
    "show_on_timeline": 1
@@ -169,9 +173,11 @@
    "reqd": 1
   },
   {
+   "fetch_from": "customer_name.customer_primary_contact",
    "fieldname": "contact_person",
-   "fieldtype": "Data",
-   "label": "Contact Person"
+   "fieldtype": "Link",
+   "label": "Contact Person",
+   "options": "Contact"
   },
   {
    "fieldname": "column_break_ysvw",
@@ -727,13 +733,29 @@
    "fieldtype": "Date",
    "hidden": 1,
    "label": "Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "manual_inspection",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Manual Inspection",
+   "print_hide": 1
+  },
+  {
+   "depends_on": "manual_inspection",
+   "fieldname": "attach_manual_inspection_sheet",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Attach Manual Inspection sheet",
+   "print_hide": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-11 20:30:25.948096",
+ "modified": "2026-08-12 11:08:10.306185",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",

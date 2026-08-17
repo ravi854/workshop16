@@ -24,15 +24,17 @@
   "contact_person",
   "column_break_ysvw",
   "customer_phone",
-  "crane_model",
+  "equipment_model",
   "truck_model",
   "column_break_hbfj",
-  "crane_serial_number",
+  "equipment_serial_number",
   "km",
   "km__out",
   "column_break_ngoh",
   "registration_number",
   "vin_number",
+  "manual_inspection",
+  "attach_manual_inspection_sheet",
   "section_break_bodn",
   "mirror_left",
   "mirror_right",
@@ -133,17 +135,24 @@
   "booked_out_signature",
   "column_break_yuaa",
   "drivers_name",
-  "drivers_name_copy",
+  "drivers_phone_no",
   "driver_signature",
   "column_break_doyd"
  ],
  "fields": [
   {
+   "bold": 1,
    "fieldname": "incoming_inspection_number",
    "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Incoming Inspection Number",
    "options": "Inspection_M",
-   "reqd": 1
+   "reqd": 1,
+   "sticky": 1
   },
   {
    "fetch_from": "incoming_inspection_number.company",
@@ -158,11 +167,12 @@
   },
   {
    "bold": 1,
+   "default": "INS-MC-OUT-.YYYY.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
+   "hidden": 1,
    "label": "Naming Series",
-   "options": "INS-IN-.YYYY.-",
+   "options": "INS-MC-OUT-.YYYY.-",
    "print_hide": 1,
    "reqd": 1,
    "show_on_timeline": 1
@@ -233,16 +243,10 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "incoming_inspection_number.customer_phone",
+   "fetch_from": "incoming_inspection_number.custom_contact_no",
    "fieldname": "customer_phone",
    "fieldtype": "Data",
    "label": "customer phone"
-  },
-  {
-   "fetch_from": "incoming_inspection_number.crane_model",
-   "fieldname": "crane_model",
-   "fieldtype": "Data",
-   "label": "Crane Model"
   },
   {
    "fetch_from": "incoming_inspection_number.truck_model",
@@ -253,12 +257,6 @@
   {
    "fieldname": "column_break_hbfj",
    "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "incoming_inspection_number.crane_serial_number",
-   "fieldname": "crane_serial_number",
-   "fieldtype": "Data",
-   "label": "Crane Serial Number"
   },
   {
    "fetch_from": "incoming_inspection_number.km",
@@ -858,16 +856,43 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "drivers_name_copy",
+   "fieldname": "drivers_phone_no",
    "fieldtype": "Data",
-   "label": "Drivers Name Copy"
+   "label": "Drivers Phone No."
+  },
+  {
+   "fetch_from": "incoming_inspection_number.crane_model",
+   "fieldname": "equipment_model",
+   "fieldtype": "Data",
+   "label": "Equipment Model"
+  },
+  {
+   "fetch_from": "incoming_inspection_number.crane_serial_number",
+   "fieldname": "equipment_serial_number",
+   "fieldtype": "Data",
+   "label": "Equipment S-No."
+  },
+  {
+   "default": "0",
+   "fieldname": "manual_inspection",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Manual Inspection",
+   "print_hide": 1
+  },
+  {
+   "depends_on": "manual_inspection",
+   "fieldname": "attach_manual_inspection_sheet",
+   "fieldtype": "Attach",
+   "label": "Attach Manual Inspection sheet",
+   "print_hide": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-10 15:31:44.501539",
+ "modified": "2026-08-12 11:07:20.619733",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_Out",
