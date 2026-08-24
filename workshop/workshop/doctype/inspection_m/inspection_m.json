@@ -46,30 +46,42 @@
   "tyre_left_rear",
   "tyre_right_rear",
   "spare_wheel",
+  "spare_wheel_pic",
   "jack",
+  "jack_pic",
   "wheel_spanner",
+  "wheel_spanner_pic",
   "door_left",
   "door_right",
   "quantity_keys",
+  "keys",
   "windscreen_wipers",
   "column_break_esbg",
   "seat_upholstery",
   "foot_pads",
   "brace",
   "triangles",
+  "triangles_pic",
   "battery_cover",
+  "battery_cover_pic",
   "radio",
+  "radio_pic",
   "cigarette_lighter",
   "fuel_cap",
+  "fuel_cap_pic",
   "books",
   "wheel_chooks",
+  "accessories",
+  "accessories_pic",
   "column_break_hptu",
   "fule_level",
+  "oil_level",
   "battery_condition",
   "battery_model",
   "column_break_exjk",
   "fuel",
   "battery",
+  "oil",
   "section_break_qvte",
   "left_front_top",
   "left_front_down",
@@ -78,13 +90,20 @@
   "left_back_top",
   "left_back_down",
   "column_break_ddlw",
-  "column_break_oqne",
-  "front_left",
+  "column_break_jsse",
   "front_right",
-  "back_left",
+  "right_front_down",
+  "right_back_top",
   "back_right",
+  "back_left",
+  "front_left",
+  "column_break_oqne",
+  "right_back_down",
   "wheels_front_left",
+  "right_down",
+  "right_top",
   "wheels_front_right",
+  "right_front_top",
   "column_break_qjau",
   "wheels_back_right",
   "wheels_back_left",
@@ -92,13 +111,6 @@
   "extra2",
   "extra3",
   "extra4",
-  "column_break_bsoh",
-  "right_front_top",
-  "right_front_down",
-  "right_top",
-  "right_down",
-  "right_back_top",
-  "right_back_down",
   "section_break_ghfd",
   "selected_image_source",
   "column_break_pbyx",
@@ -144,9 +156,18 @@
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.docstatus==1",
    "fieldname": "job_number",
    "fieldtype": "Data",
-   "label": "Job Number"
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Job Number",
+   "sticky": 1,
+   "unique": 1
   },
   {
    "collapsible": 1,
@@ -445,7 +466,7 @@
   {
    "fieldname": "fule_level",
    "fieldtype": "Select",
-   "label": "Fule Level",
+   "label": "Fuel Level",
    "options": "\nEmpty\nNearly Empty\nQater\nHalf\n3Qater\nNearly Full\nFull"
   },
   {
@@ -456,7 +477,7 @@
   {
    "fieldname": "battery_model",
    "fieldtype": "Data",
-   "label": "Battery Model"
+   "label": "Battery Type"
   },
   {
    "collapsible": 1,
@@ -533,14 +554,20 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "fule_level",
    "fieldname": "fuel",
    "fieldtype": "Attach Image",
-   "label": "Fuel"
+   "label": "Fuel",
+   "mandatory_depends_on": "eval:doc.fule_level",
+   "print_hide": 1
   },
   {
+   "depends_on": "battery_condition",
    "fieldname": "battery",
    "fieldtype": "Attach Image",
-   "label": "Battery"
+   "label": "Battery",
+   "mandatory_depends_on": "eval:doc.battery_condition",
+   "print_hide": 1
   },
   {
    "collapsible": 1,
@@ -653,10 +680,6 @@
    "label": "Extra4"
   },
   {
-   "fieldname": "column_break_bsoh",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "right_front_top",
    "fieldtype": "Attach Image",
    "label": "Right Front Top"
@@ -705,7 +728,7 @@
    "fieldname": "selected_image_source",
    "fieldtype": "Select",
    "label": "Select Image to View",
-   "options": "\nLeft Front Top\nLeft Front Down\nLeft Top\nLeft Down\nLeft Back Top\nLeft Back Down\nRight Front Top\nRight Front Down\nRight Top\nRight Down\nRight Back Top\nRight Back Down\nFront Left\nFront Right\nBack Left\nBack Right\nWheels front Left\nWheels front Right\nWheels Back Right\nWheels Back Left\nExtra1\nExtra2\nExtra3\nExtra4",
+   "options": "\nLeft Front Top\nLeft Front Down\nLeft Top\nLeft Down\nLeft Back Top\nLeft Back Down\nRight Front Top\nRight Front Down\nRight Top\nRight Down\nRight Back Top\nRight Back Down\nFront Left\nFront Right\nBack Left\nBack Right\nWheels front Left\nWheels front Right\nWheels Back Right\nWheels Back Left\nSpare Wheel\nExtra1\nExtra2\nExtra3\nExtra4\nOil Level\nFuel Level\nBattery Condition",
    "print_hide": 1
   },
   {
@@ -748,14 +771,129 @@
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Attach Manual Inspection sheet",
+   "mandatory_depends_on": "eval:doc.manual_inspection",
    "print_hide": 1
+  },
+  {
+   "fieldname": "oil_level",
+   "fieldtype": "Select",
+   "label": "Oil Level",
+   "options": "\nEmpty\nNearly Empty\nQater\nHalf\n3Qater\nNearly Full\nFull"
+  },
+  {
+   "depends_on": "oil_level",
+   "fieldname": "oil",
+   "fieldtype": "Attach Image",
+   "label": "Oil",
+   "mandatory_depends_on": "eval:doc.oil_level",
+   "print_hide": 1
+  },
+  {
+   "depends_on": "spare_wheel",
+   "fieldname": "spare_wheel_pic",
+   "fieldtype": "Attach Image",
+   "label": "Spare Wheel Pic",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.spare_wheel",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "depends_on": "quantity_keys",
+   "fieldname": "keys",
+   "fieldtype": "Attach Image",
+   "label": "Keys",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.quantity_keys",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "depends_on": "jack",
+   "fieldname": "jack_pic",
+   "fieldtype": "Attach Image",
+   "label": "Jack Pic",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.jack",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "depends_on": "wheel_spanner",
+   "fieldname": "wheel_spanner_pic",
+   "fieldtype": "Attach Image",
+   "label": "Wheel Spanner Pic",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.wheel_spanner",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "depends_on": "triangles",
+   "fieldname": "triangles_pic",
+   "fieldtype": "Attach Image",
+   "label": "Triangles PIc",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.triangles",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "accessories",
+   "fieldtype": "Check",
+   "label": "Accessories"
+  },
+  {
+   "depends_on": "accessories",
+   "fieldname": "accessories_pic",
+   "fieldtype": "Attach Image",
+   "label": "Accessories PIc",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.accessories",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "fieldname": "column_break_jsse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "fuel_cap",
+   "fieldname": "fuel_cap_pic",
+   "fieldtype": "Attach Image",
+   "label": "Fuel Cap Pic",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.fuel_cap",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "depends_on": "battery_cover",
+   "fieldname": "battery_cover_pic",
+   "fieldtype": "Attach Image",
+   "label": "Battery Cover Pic",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.battery_cover",
+   "print_hide": 1,
+   "show_description_on_click": 1
+  },
+  {
+   "depends_on": "radio",
+   "fieldname": "radio_pic",
+   "fieldtype": "Attach Image",
+   "label": "Radio Pic",
+   "make_attachment_public": 1,
+   "mandatory_depends_on": "eval:doc.radio",
+   "print_hide": 1,
+   "show_description_on_click": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-12 11:08:10.306185",
+ "modified": "2026-08-24 10:57:59.694257",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",
@@ -791,9 +929,11 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "job_number",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
+ "title_field": "job_number",
  "track_changes": 1,
  "track_seen": 1,
  "track_views": 1
