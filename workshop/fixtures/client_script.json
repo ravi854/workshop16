@@ -207,5 +207,16 @@
   "name": "Jobcard Number",
   "script": "frappe.ui.form.on('Inspection_M', {\n    refresh: function(frm) {\n        // Checks field status when the document is loaded or refreshed\n        lock_field_if_populated(frm);\n    },\n    job_number: function(frm) {\n        // Locks the field instantly as soon as the user enters a value\n        lock_field_if_populated(frm);\n    }\n});\n\nfunction lock_field_if_populated(frm) {\n    // If the field has a value, make it read-only. Otherwise, leave it editable.\n    let is_read_only = frm.doc.job_number ? true : false;\n    frm.set_df_property('job_number', 'read_only', is_read_only);\n}\n",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection_M",
+  "enabled": 1,
+  "modified": "2026-08-31 08:30:22.939543",
+  "module": "Workshop",
+  "name": "Company with letter head",
+  "script": "frappe.ui.form.on('Inspection_M', {\n    refresh: function(frm) {\n        // 1. Remove standard core print event listeners to stop the page from freezing\n        frm.page.clear_primary_action(); \n        \n        // 2. Map the appropriate custom format based on the selected company\n        let target_format = 'Standard';\n        if (frm.doc.company === 'Multicranes & Platforms') {\n            target_format = 'Multicranes';\n        } else if (frm.doc.company === 'Challenger Access Equipment') {\n            target_format = 'Challenger';\n        } else if (frm.doc.company === 'Multifleet Solutions') {\n            target_format = 'Multifleet';\n        }\n\n        // 3. Inject our own custom routing directly onto the standard form \"Print\" menu option\n        if (frm.page.menu) {\n            // Find and target the native \"Print\" button on the workspace wrapper\n            let print_btn = frm.page.menu.find('[data-label=\"Print\"]');\n            \n            if (print_btn.length) {\n                // Unbind Frappe's native sidebar layout loader\n                print_btn.off('click').on('click', function(e) {\n                    e.preventDefault();\n                    e.stopPropagation();\n\n                    // Generate a direct, clean full-page printable URL string\n                    let print_url = frappe.urllib.get_full_url(\n                        `/printview?doctype=${encodeURIComponent(frm.doc.doctype)}` +\n                        `&name=${encodeURIComponent(frm.doc.name)}` +\n                        `&trigger_print=0` + \n                        `&format=${encodeURIComponent(target_format)}` +\n                        `&no_letterhead=0`\n                    );\n                    \n                    // Open the tailored view instantly without loading the heavy sidebar\n                    window.open(print_url, '_blank');\n                });\n            }\n        }\n    }\n});\n",
+  "view": "Form"
  }
 ]
