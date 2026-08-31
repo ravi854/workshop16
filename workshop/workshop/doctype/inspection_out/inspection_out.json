@@ -115,17 +115,11 @@
   "column_break_rdbt",
   "detail_of_work_to_be_done",
   "section_break_mqct",
-  "parameter_1",
-  "parameter_2",
+  "quality_checked_by",
   "column_break_whyi",
-  "parameter_3",
-  "parameter_4",
+  "quality_control_signature",
   "column_break_mwgt",
-  "parameter_5",
-  "parameter_6",
   "column_break_umiw",
-  "parameter_7",
-  "parameter_8",
   "section_break_frdd",
   "date_delivered",
   "date_collected",
@@ -792,18 +786,6 @@
    "label": "Quality Control Check"
   },
   {
-   "default": "0",
-   "fieldname": "parameter_1",
-   "fieldtype": "Check",
-   "label": "Parameter 1"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_2",
-   "fieldtype": "Check",
-   "label": "Parameter 2"
-  },
-  {
    "fieldname": "column_break_whyi",
    "fieldtype": "Column Break"
   },
@@ -814,42 +796,6 @@
   {
    "fieldname": "column_break_umiw",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_3",
-   "fieldtype": "Check",
-   "label": "Parameter 3"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_4",
-   "fieldtype": "Check",
-   "label": "Parameter 4"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_5",
-   "fieldtype": "Check",
-   "label": "Parameter 5"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_6",
-   "fieldtype": "Check",
-   "label": "Parameter 6"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_7",
-   "fieldtype": "Check",
-   "label": "Parameter 7"
-  },
-  {
-   "default": "0",
-   "fieldname": "parameter_8",
-   "fieldtype": "Check",
-   "label": "Parameter 8"
   },
   {
    "fieldname": "column_break_doyd",
@@ -886,13 +832,23 @@
    "fieldtype": "Attach",
    "label": "Attach Manual Inspection sheet",
    "print_hide": 1
+  },
+  {
+   "fieldname": "quality_checked_by",
+   "fieldtype": "Data",
+   "label": "Quality Checked By"
+  },
+  {
+   "fieldname": "quality_control_signature",
+   "fieldtype": "Signature",
+   "label": "Signature"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-12 11:07:20.619733",
+ "modified": "2026-08-31 14:43:01.812603",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_Out",
