@@ -11,9 +11,11 @@
   "customer_name",
   "amended_from",
   "contact_person",
+  "contact_number",
   "column_break_ysvw",
   "vin_number",
   "registration_number",
+  "hour_meter",
   "column_break_hbfj",
   "truck_model",
   "km",
@@ -887,13 +889,26 @@
    "mandatory_depends_on": "eval:doc.radio",
    "print_hide": 1,
    "show_description_on_click": 1
+  },
+  {
+   "fetch_from": "customer_name.customer_primary_contact",
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "hour_meter",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Hour Meter"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-24 10:57:59.694257",
+ "modified": "2026-09-02 09:49:47.945167",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",
