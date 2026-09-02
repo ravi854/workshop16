@@ -11,7 +11,7 @@
   "customer_name",
   "amended_from",
   "contact_person",
-  "custom_contact_number",
+  "custom_contact_no",
   "column_break_ysvw",
   "vin_number",
   "registration_number",
@@ -899,16 +899,17 @@
   },
   {
    "fetch_from": "customer_name.mobile_no",
-   "fieldname": "custom_contact_number",
-   "fieldtype": "Data",
-   "label": "Contact Number"
+   "fieldname": "custom_contact_no",
+   "fieldtype": "Link",
+   "label": "Contact Number",
+   "options": "Contact"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-09-02 11:55:50.328217",
+ "modified": "2026-09-02 16:32:19.953218",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",
