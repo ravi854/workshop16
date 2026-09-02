@@ -1,9 +1,0 @@
-# Copyright (c) 2026, A1ITS and contributors
-# For license information, please see license.txt
-
-# import frappe
-from frappe.model.document import Document
-
-
-class InspectionNew(Document):
-	pass
