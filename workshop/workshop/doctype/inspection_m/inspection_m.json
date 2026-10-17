@@ -716,6 +716,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "collapsible": 1,
    "fieldname": "section_break_ghfd",
    "fieldtype": "Section Break",
@@ -727,6 +728,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "selected_image_source",
    "fieldtype": "Select",
    "label": "Select Image to View",
@@ -734,8 +736,10 @@
    "print_hide": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "dynamic_preview_image",
-   "fieldtype": "Image"
+   "fieldtype": "Image",
+   "options": "selected_image_source"
   },
   {
    "fieldname": "company",
@@ -909,7 +913,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-17 12:16:14.376667",
+ "modified": "2026-10-17 13:23:15.232676",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",
