@@ -900,16 +900,16 @@
   {
    "fetch_from": "customer_name.mobile_no",
    "fieldname": "custom_contact_no",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Contact Number",
-   "options": "Contact"
+   "options": "Contact Phone"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-09-02 16:32:19.953218",
+ "modified": "2026-10-17 12:16:14.376667",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_M",
