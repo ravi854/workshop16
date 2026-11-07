@@ -1,7 +1,6 @@
 {
- "app": "workshop",
  "charts": [],
- "content": "[{\"id\":\"HZ5z2EohfJ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the Workshop workspace</span>\",\"col\":12}},{\"id\":\"lzB1A7EOq_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Click on \\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t to edit\",\"col\":12}},{\"id\":\"_zdmqfKP5Y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Oficina History Jobs\",\"col\":3}},{\"id\":\"iBa6chZpOT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection\",\"col\":3}},{\"id\":\"7ZJkxB2ut1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quotation\",\"col\":3}},{\"id\":\"pMPz0GomGs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Jobcard\",\"col\":3}},{\"id\":\"xWiyZS6PiZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection Multicranes\",\"col\":5}},{\"id\":\"C9d0zIQuuL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection Out\",\"col\":3}}]",
+ "content": "[{\"id\": \"HZ5z2EohfJ\", \"type\": \"header\", \"data\": {\"text\": \"\\u003cspan class=\\\"h4\\\"\\u003eWelcome to the Workshop workspace\\u003c/span\\u003e\", \"col\": 12}}, {\"id\": \"lzB1A7EOq_\", \"type\": \"paragraph\", \"data\": {\"text\": \"Click on \\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t to edit\", \"col\": 12}}, {\"id\": \"_zdmqfKP5Y\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Oficina History Jobs\", \"col\": 3}}, {\"id\": \"iBa6chZpOT\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inspection\", \"col\": 3}}, {\"id\": \"7ZJkxB2ut1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Quotation\", \"col\": 3}}, {\"id\": \"pMPz0GomGs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Jobcard\", \"col\": 3}}, {\"id\": \"xWiyZS6PiZ\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inspection IN\", \"col\": 5}}, {\"id\": \"C9d0zIQuuL\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inspection Out\", \"col\": 3}}]",
  "creation": "2026-06-12 07:59:29.592010",
  "custom_blocks": [],
  "docstatus": 0,
@@ -34,30 +33,21 @@
    "type": "Link"
   }
  ],
- "modified": "2026-08-10 18:53:48.614887",
+ "modified": "2026-10-27 19:30:44.094260",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Workshop",
  "number_cards": [],
  "owner": "Administrator",
  "public": 1,
- "quick_lists": [
-  {
-   "document_type": "Inspection_M",
-   "label": "Ins IN"
-  },
-  {
-   "document_type": "Inspection_Out",
-   "label": "Ins OUT"
-  }
- ],
+ "quick_lists": [],
  "roles": [],
  "sequence_id": 0.0,
  "shortcuts": [
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Inspection Multicranes",
+   "label": "Inspection IN",
    "link_to": "Inspection_M",
    "stats_filter": "[]",
    "type": "DocType"
@@ -103,6 +93,7 @@
    "type": "DocType"
   }
  ],
+ "standard": 1,
  "title": "Workshop",
  "type": "Workspace"
 }

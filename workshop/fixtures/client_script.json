@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Inspection_M",
+  "enabled": 0,
+  "modified": "2026-10-29 11:27:45.488106",
+  "module": "Workshop",
+  "name": "Image preview bypass",
+  "script": "frappe.ui.form.on('Inspection_M', {\n    refresh: function(frm) {\n        // 1. Identify all fields configured as Attach Image\n        const target_fields = frm.meta.fields\n            .filter(f => f.fieldtype === 'Attach Image')\n            .map(f => f.fieldname);\n\n        target_fields.forEach(fieldname => {\n            let field = frm.get_field(fieldname);\n            if (!field) return;\n\n            // 2. Intercept the standard click behavior directly\n            field.on_attach_click = function() {\n                \n                // Temporarily alter type to standard Attach to help block any secondary crop checks\n                field.df.fieldtype = 'Attach';\n\n                // 3. Fire the native uploader instance\n                let file_uploader = new frappe.ui.FileUploader({\n                    doctype: frm.doctype,\n                    docname: frm.docname,\n                    fieldname: fieldname,\n                    folder: 'Home/Attachments',\n                    allow_multiple: false,\n                    restrictions: {\n                        allowed_file_types: ['image/*'] \n                    },\n                    on_success: function(file_doc) {\n                        field.df.fieldtype = 'Attach Image';\n\n                        if (file_doc && file_doc.file_url) {\n                            frm.set_value(fieldname, file_doc.file_url);\n                            frm.refresh_field(fieldname);\n\n                            frappe.show_alert({\n                                message: __('Photo uploaded! Autosaving...'), \n                                indicator: 'green'\n                            });\n                            \n                            setTimeout(() => {\n                                frm.save();\n                            }, 300);\n                        }\n                    }\n                });\n\n                // 4. THE ULTIMATE BYPASS: Hook into the file input event of the new uploader dialog container\n                file_uploader.uploader.$wrapper.on('change', 'input[type=\"file\"]', function(e) {\n                    let files = e.target.files;\n                    if (!files || files.length === 0) return;\n\n                    // Grab the raw binary file \n                    let target_file = files[0];\n\n                    // Close the blank uploader dialog modal instantly before it displays a preview wizard\n                    file_uploader.dialog.hide();\n\n                    // Force upload immediately using the private framework queue engine\n                    file_uploader.uploader.upload_files([target_file]);\n                });\n\n                // Safety fallback to restore field types if dialog is dismissed\n                file_uploader.dialog.on_hide = function() {\n                    field.df.fieldtype = 'Attach Image';\n                };\n            };\n        });\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Quotation",
   "enabled": 0,
   "modified": "2026-09-18 08:28:54.636227",
@@ -327,6 +338,39 @@
   "module": "Workshop",
   "name": "Company with letter head",
   "script": "frappe.ui.form.on('Inspection_M', {\n    refresh: function(frm) {\n        // 1. Remove standard core print event listeners to stop the page from freezing\n        //frm.page.clear_primary_action(); \n        \n        // 2. Map the appropriate custom format based on the selected company\n        let target_format = 'Standard';\n        if (frm.doc.company === 'Multicranes & Platforms') {\n            target_format = 'Multicranes';\n        } else if (frm.doc.company === 'Challenger Access Equipment') {\n            target_format = 'Challenger';\n        } else if (frm.doc.company === 'Multifleet Solutions') {\n            target_format = 'Multifleet';\n        }\n\n        // 3. Inject our own custom routing directly onto the standard form \"Print\" menu option\n        if (frm.page.menu) {\n            // Find and target the native \"Print\" button on the workspace wrapper\n            let print_btn = frm.page.menu.find('[data-label=\"Print\"]');\n            \n            if (print_btn.length) {\n                // Unbind Frappe's native sidebar layout loader\n                print_btn.off('click').on('click', function(e) {\n                    e.preventDefault();\n                    e.stopPropagation();\n\n                    // Generate a direct, clean full-page printable URL string\n                    let print_url = frappe.urllib.get_full_url(\n                        `/printview?doctype=${encodeURIComponent(frm.doc.doctype)}` +\n                        `&name=${encodeURIComponent(frm.doc.name)}` +\n                        `&trigger_print=0` + \n                        `&format=${encodeURIComponent(target_format)}` +\n                        `&no_letterhead=0`\n                    );\n                    \n                    // Open the tailored view instantly without loading the heavy sidebar\n                    window.open(print_url, '_blank');\n                });\n            }\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "CRM Deal",
+  "enabled": 0,
+  "modified": "2026-11-02 15:50:04.848725",
+  "module": null,
+  "name": "Location",
+  "script": "frappe.ui.form.on('CRM Deal', {\n    breakdown_address: function(frm) {\n        // Check if the call-taker actually entered an address\n        if (frm.doc.breakdown_address) {\n            \n            // 1. Clean the address string to make it URL-safe\n            let cleanedAddress = encodeURIComponent(frm.doc.breakdown_address);\n            \n            // 2. Formulate a standard Google Maps Search / Navigation Link\n            let googleMapsUrl = `https://google.com{cleanedAddress}`;\n            \n            // 3. Inject the link straight into your Location field\n            frm.set_value('breakdown_location', googleMapsUrl);\n            \n            // Refresh the field so the user sees the update instantly\n            frm.refresh_field('breakdown_location');\n        } else {\n            // Clear the location field if the address is wiped out\n            frm.set_value('breakdown_location', '');\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "CRM Deal",
+  "enabled": 0,
+  "modified": "2026-11-07 08:47:40.549802",
+  "module": null,
+  "name": "Maintenance visit cteation",
+  "script": "frappe.ui.form.on('CRM Deal', {\n    status: function(frm) {\n        // Trigger immediately when user switches the status field to Dispatched in UI\n        if (frm.doc.status === 'Dispatched') {\n            frappe.call({\n                method: 'auto_create_maintenance_visit',\n                args: {\n                    deal_id: frm.doc.name\n                },\n                callback: function(r) {\n                    frappe.show_alert({\n                        message: __('Maintenance visit generation task queued in background.'),\n                        indicator: 'green'\n                    });\n                }\n            });\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Inspection_Out",
+  "enabled": 1,
+  "modified": "2026-11-07 12:42:09.729601",
+  "module": "Workshop",
+  "name": "Quality Checks Field control",
+  "script": "frappe.ui.form.on(\"Inspection_Out\", {\n    refresh: function(frm) {\n        // Check if the document is already saved (not a new/unsaved doc)\n        if (!frm.is_new()) {\n            // Check if the field has a value/data\n            if (frm.doc.name_hydraulics) {\n                frm.set_df_property(\"name_hydraulics\", \"read_only\", 1);\n            }\n            if (frm.doc.hydraulic_comments) {\n                frm.set_df_property(\"hydraulic_comments\", \"read_only\", 1);\n            }\n            if (frm.doc.name_assembly) {\n                frm.set_df_property(\"name_assembly\", \"read_only\", 1);\n            }\n            if (frm.doc.assembly_comments) {\n                frm.set_df_property(\"assembly_comments\", \"read_only\", 1);\n            }\n            if (frm.doc.name_electrical) {\n                frm.set_df_property(\"name_electrical\", \"read_only\", 1);\n            }\n            if (frm.doc.electrical_comments) {\n                frm.set_df_property(\"electrical_comments\", \"read_only\", 1);\n            }\n            \n        }\n    }\n});\n",
   "view": "Form"
  }
 ]

@@ -114,6 +114,20 @@
   "inspection_details",
   "column_break_rdbt",
   "detail_of_work_to_be_done",
+  "quality_check",
+  "hydraulic_checked_by_column",
+  "name_hydraulics",
+  "hydraulic_comments",
+  "hydraulic_signature",
+  "assembly_checked_by_column",
+  "name_assembly",
+  "assembly_comments",
+  "assembly_signature",
+  "electrical_checked_by_column",
+  "name_electrical",
+  "electrical_comments",
+  "electrical_signature",
+  "column_break_sdoh",
   "section_break_mqct",
   "quality_checked_by",
   "column_break_whyi",
@@ -845,13 +859,85 @@
    "fieldname": "quality_control_signature",
    "fieldtype": "Signature",
    "label": "Signature"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.company == 'Challenger Access Equipment' || doc.company == 'Multicranes & Platforms'",
+   "fieldname": "quality_check",
+   "fieldtype": "Section Break",
+   "label": "Quality Checks"
+  },
+  {
+   "fieldname": "hydraulic_checked_by_column",
+   "fieldtype": "Column Break",
+   "label": "Hydraulic Checked By"
+  },
+  {
+   "fieldname": "assembly_checked_by_column",
+   "fieldtype": "Column Break",
+   "label": "Assembly Checked By"
+  },
+  {
+   "fieldname": "electrical_checked_by_column",
+   "fieldtype": "Column Break",
+   "label": "Electrical Checked By"
+  },
+  {
+   "fieldname": "hydraulic_comments",
+   "fieldtype": "Small Text",
+   "label": "Hydraulic Comments"
+  },
+  {
+   "fieldname": "hydraulic_signature",
+   "fieldtype": "Signature",
+   "label": "Hydraulic Signature",
+   "read_only_depends_on": "eval:doc.hydraulic_signature"
+  },
+  {
+   "fieldname": "name_hydraulics",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "name_assembly",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "assembly_comments",
+   "fieldtype": "Small Text",
+   "label": "Assembly Comments"
+  },
+  {
+   "fieldname": "assembly_signature",
+   "fieldtype": "Signature",
+   "label": "Assembly Signature"
+  },
+  {
+   "fieldname": "name_electrical",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "electrical_comments",
+   "fieldtype": "Small Text",
+   "label": "Electrical Comments"
+  },
+  {
+   "fieldname": "electrical_signature",
+   "fieldtype": "Signature",
+   "label": "Electrical Signature"
+  },
+  {
+   "fieldname": "column_break_sdoh",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-17 12:43:05.624339",
+ "modified": "2026-11-07 12:59:09.474408",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_Out",
