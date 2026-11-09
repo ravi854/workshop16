@@ -104,13 +104,13 @@
   "doctype_event": "Before Insert",
   "enable_rate_limit": 0,
   "event_frequency": "All",
-  "modified": "2026-11-09 14:29:59.194335",
+  "modified": "2026-11-09 14:47:04.652707",
   "module": "Workshop",
   "name": "Inspection Jobcard Number Unique",
   "rate_limit_count": 5,
   "rate_limit_seconds": 86400,
   "reference_doctype": "Inspection_M",
-  "script": "# Check if this document is being created via an amendment\nif doc.amended_from:\n    # Append a suffix to the unique field so it doesn't collide with the cancelled document\n    # Replace 'your_unique_field' with the actual fieldname\n    if doc.job_number:\n        doc.job_number = f\"{doc.job_number}-1\"\n",
+  "script": "# Check if document is being created via an amendment\nif doc.amended_from:\n    # Append a suffix to the unique field so it doesn't collide with the cancelled document\n    if doc.job_number:\n        doc.job_number = f\"{doc.job_number}-1\"\n",
   "script_type": "DocType Event"
  }
 ]
