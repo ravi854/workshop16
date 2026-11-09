@@ -175,12 +175,12 @@
   },
   {
    "bold": 1,
-   "default": "INS-MC-OUT-.YYYY.-",
+   "default": "INS-OUT-.YYYY.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Naming Series",
-   "options": "INS-MC-OUT-.YYYY.-",
+   "options": "INS-OUT-.YYYY.-",
    "print_hide": 1,
    "reqd": 1,
    "show_on_timeline": 1
@@ -937,7 +937,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-11-07 12:59:09.474408",
+ "modified": "2026-11-09 13:40:43.283386",
  "modified_by": "Administrator",
  "module": "Workshop",
  "name": "Inspection_Out",
